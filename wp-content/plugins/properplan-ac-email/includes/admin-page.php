@@ -50,6 +50,9 @@ function render_settings_page() {
 
         $saved_url = get_option( 'properplan_ac_email_ac_url', '' );
         $saved_key = get_option( 'properplan_ac_email_ac_key', '' );
+        $saved_from_name = get_option( 'properplan_ac_email_from_name', 'Laura P' );
+        $saved_from_email = get_option( 'properplan_ac_email_from_email', 'team@properplan.com' );
+        $saved_reply_to = get_option( 'properplan_ac_email_reply_to_email', 'team@properplan.com' );
 
         $test_result  = isset( $_GET['test_result'] ) ? sanitize_text_field( wp_unslash( $_GET['test_result'] ) ) : '';
         $test_message = isset( $_GET['test_message'] ) ? sanitize_text_field( rawurldecode( wp_unslash( $_GET['test_message'] ) ) ) : '';
@@ -88,6 +91,27 @@ function render_settings_page() {
                                                 <td>
                                                         <input name="properplan_ac_email_ac_key" type="text" id="properplan_ac_email_ac_key" value="<?php echo esc_attr( $saved_key ); ?>" class="regular-text" required />
                                                         <p class="description"><?php esc_html_e( 'Paste the API key generated in ActiveCampaign.', 'properplan-ac-email' ); ?></p>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th scope="row"><label for="properplan_ac_email_from_name"><?php esc_html_e( 'From Name', 'properplan-ac-email' ); ?></label></th>
+                                                <td>
+                                                        <input name="properplan_ac_email_from_name" type="text" id="properplan_ac_email_from_name" value="<?php echo esc_attr( $saved_from_name ); ?>" class="regular-text" required />
+                                                        <p class="description"><?php esc_html_e( 'Name that appears in the From field of emails.', 'properplan-ac-email' ); ?></p>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th scope="row"><label for="properplan_ac_email_from_email"><?php esc_html_e( 'From Email', 'properplan-ac-email' ); ?></label></th>
+                                                <td>
+                                                        <input name="properplan_ac_email_from_email" type="email" id="properplan_ac_email_from_email" value="<?php echo esc_attr( $saved_from_email ); ?>" class="regular-text" required />
+                                                        <p class="description"><?php esc_html_e( 'Email address that appears in the From field of emails.', 'properplan-ac-email' ); ?></p>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th scope="row"><label for="properplan_ac_email_reply_to_email"><?php esc_html_e( 'Reply-To Email', 'properplan-ac-email' ); ?></label></th>
+                                                <td>
+                                                        <input name="properplan_ac_email_reply_to_email" type="email" id="properplan_ac_email_reply_to_email" value="<?php echo esc_attr( $saved_reply_to ); ?>" class="regular-text" required />
+                                                        <p class="description"><?php esc_html_e( 'Email address for replies to be sent to.', 'properplan-ac-email' ); ?></p>
                                                 </td>
                                         </tr>
                                 </tbody>
@@ -154,9 +178,15 @@ function handle_save_settings() {
 
         $api_url = isset( $_POST['properplan_ac_email_ac_url'] ) ? esc_url_raw( wp_unslash( $_POST['properplan_ac_email_ac_url'] ) ) : '';
         $api_key = isset( $_POST['properplan_ac_email_ac_key'] ) ? sanitize_text_field( wp_unslash( $_POST['properplan_ac_email_ac_key'] ) ) : '';
+        $from_name = isset( $_POST['properplan_ac_email_from_name'] ) ? sanitize_text_field( wp_unslash( $_POST['properplan_ac_email_from_name'] ) ) : 'Laura P';
+        $from_email = isset( $_POST['properplan_ac_email_from_email'] ) ? sanitize_email( wp_unslash( $_POST['properplan_ac_email_from_email'] ) ) : 'team@properplan.com';
+        $reply_to = isset( $_POST['properplan_ac_email_reply_to_email'] ) ? sanitize_email( wp_unslash( $_POST['properplan_ac_email_reply_to_email'] ) ) : 'team@properplan.com';
 
         update_option( 'properplan_ac_email_ac_url', $api_url );
         update_option( 'properplan_ac_email_ac_key', $api_key );
+        update_option( 'properplan_ac_email_from_name', $from_name );
+        update_option( 'properplan_ac_email_from_email', $from_email );
+        update_option( 'properplan_ac_email_reply_to_email', $reply_to );
 
         wp_safe_redirect(
                 add_query_arg(

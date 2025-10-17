@@ -1,0 +1,331 @@
+[17-Oct-2025 13:44:43 UTC] AC Handler: Received post ID 6
+[17-Oct-2025 13:44:43 UTC] AC Handler: AC client initialized
+[17-Oct-2025 13:44:43 UTC] AC Handler: Message payload => Array
+(
+    [message] => Array
+        (
+            [subject] => test subject
+            [fromEmail] => team@properplan.com
+            [fromName] => Laura P
+            [reply2] => team@properplan.com
+            [html] => testing testing 123!
+            [text] => testing testing 123!
+            [name] => test campaign name
+        )
+
+)
+
+[17-Oct-2025 13:44:43 UTC] AC Handler: Message response => Array
+(
+    [code] => 201
+    [body] => Array
+        (
+            [message] => Array
+                (
+                    [subject] => test subject
+                    [reply2] => team@properplan.com
+                    [html] => testing testing 123!
+                    [text] => testing testing 123!
+                    [name] => test campaign name
+                    [links] => Array
+                        (
+                            [user] => https://properapp.activehosted.com/api/3/messages/13/user
+                            [hyperlinks] => https://properapp.activehosted.com/api/3/messages/13/hyperlinks
+                        )
+
+                    [id] => 13
+                )
+
+        )
+
+    [headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+        (
+            [data:protected] => Array
+                (
+                    [date] => Fri, 17 Oct 2025 13:44:35 GMT
+                    [content-type] => application/json
+                    [cf-ray] => 99003b410fd52547-LHR
+                    [cache-control] => no-store, no-cache, must-revalidate,no-cache, private
+                    [expires] => Thu, 19 Nov 1981 08:52:00 GMT
+                    [pragma] => no-cache
+                    [set-cookie] => Array
+                        (
+                            [0] => PHPSESSID=13e601f9a3aeaecb17bdd663857dc5d8; path=/; secure; HttpOnly; SameSite=Lax
+                            [1] => em_acp_globalauth_cookie=1ab20a94-04c4-4262-aa9b-4c20234752ca; path=/; domain=.properapp.activehosted.com; secure; httponly; SameSite=Lax
+                            [2] => cmp652803995=6c90b11b904a8bfbd84a6eab102680b8; expires=Sun, 16-Nov-2025 13:44:35 GMT; Max-Age=2592000; path=/; domain=.properapp.activehosted.com; secure; SameSite=Lax
+                            [3] => __cf_bm=JvQyFa0kJA5wnahqPwA0C496Q7i8D3T5qPucxTQX2zA-1760708675-1.0.1.1-rIsOIaxShzjc6n7W8EVOYYfjafFHurFqcPOnjM1z_CkAMlrLnDtWCTsDtDUgP7lgwvDAYVphoGwa_RX4omYvQKJ39_HCQZbQh8_rzYoqP28; path=/; expires=Fri, 17-Oct-25 14:14:35 GMT; domain=.activehosted.com; HttpOnly; Secure; SameSite=None
+                        )
+
+                    [x-envoy-decorator-operation] => ac-hosted-current-web.activecampaign-hosted.svc.cluster.local:80/*
+                    [x-envoy-upstream-service-time] => 607
+                    [x-request-id] => bc85af65-3a3d-4a1d-8241-73bbb40d365e
+                    [cf-cache-status] => DYNAMIC
+                    [strict-transport-security] => max-age=63072000; includeSubDomains; preload
+                    [server] => cloudflare
+                )
+
+        )
+
+)
+
+[17-Oct-2025 13:44:43 UTC] AC Handler: Message creation response code 201
+[17-Oct-2025 13:44:43 UTC] AC Handler: Campaign payload => Array
+(
+    [campaign] => Array
+        (
+            [name] => test campaign name
+            [type] => single
+            [status] => 0
+            [public] => 0
+            [tracklinks] => all
+            [trackreads] => 1
+            [htmlunsub] => 1
+            [p] => Array
+                (
+                    [3] => 3
+                )
+
+            [m] => Array
+                (
+                    [13] => 13
+                )
+
+        )
+
+)
+
+[17-Oct-2025 13:44:44 UTC] AC Handler: Campaign response => WP_Error Object
+(
+    [errors] => Array
+        (
+            [properplan_ac_email_api_error] => Array
+                (
+                    [0] => ActiveCampaign API request to /api/3/campaigns failed with status code 403.
+                )
+
+        )
+
+    [error_data] => Array
+        (
+            [properplan_ac_email_api_error] => Array
+                (
+                    [code] => 403
+                    [body] => Array
+                        (
+                            [errors] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [status] => 403
+                                            [title] => Forbidden
+                                            [detail] => Forbidden
+                                        )
+
+                                )
+
+                        )
+
+                    [headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [date] => Fri, 17 Oct 2025 13:44:35 GMT
+                                    [content-type] => application/json
+                                    [content-encoding] => gzip
+                                    [cache-control] => no-store, no-cache, must-revalidate
+                                    [expires] => Thu, 19 Nov 1981 08:52:00 GMT
+                                    [pragma] => no-cache
+                                    [set-cookie] => Array
+                                        (
+                                            [0] => PHPSESSID=5aad2e7bd9363d92d609ea3f5286786e; path=/; secure; HttpOnly; SameSite=Lax
+                                            [1] => em_acp_globalauth_cookie=79110691-d141-498d-bb25-82efbd1d1700; path=/; domain=.properapp.activehosted.com; secure; httponly; SameSite=Lax
+                                            [2] => __cf_bm=FGo3e2gA85PS40C_PtSbyaQlFddqTO08pkRrdG.8Pqo-1760708675-1.0.1.1-LW2ZTemtrhBpcj80HxTAnzSw4B2RfawSOmUjg8fCMLIo87Y3Bn3X47QUkos2FxUzHUHfd1KMZ9GcJieHn5mJe7KB2dz59LH6qsxAA0WhYjk; path=/; expires=Fri, 17-Oct-25 14:14:35 GMT; domain=.activehosted.com; HttpOnly; Secure; SameSite=None
+                                        )
+
+                                    [x-envoy-decorator-operation] => ac-hosted-current-web.activecampaign-hosted.svc.cluster.local:80/*
+                                    [x-envoy-upstream-service-time] => 187
+                                    [x-request-id] => 803a4758-f223-45f1-a7ca-4d370379bc18
+                                    [cf-cache-status] => DYNAMIC
+                                    [strict-transport-security] => max-age=63072000; includeSubDomains; preload
+                                    [server] => cloudflare
+                                    [cf-ray] => 99003b45af924af5-LHR
+                                )
+
+                        )
+
+                    [endpoint] => https://properapp.activehosted.com/api/3/campaigns
+                )
+
+        )
+
+    [additional_data:protected] => Array
+        (
+        )
+
+)
+
+[17-Oct-2025 13:44:44 UTC] AC Handler: Campaign request WP_Error - ActiveCampaign API request to /api/3/campaigns failed with status code 403.
+[17-Oct-2025 14:07:49 UTC] AC Handler: Received post ID 6
+[17-Oct-2025 14:07:49 UTC] AC Handler: AC client initialized
+[17-Oct-2025 14:07:49 UTC] AC Handler: Message payload => Array
+(
+    [message] => Array
+        (
+            [subject] => test subject
+            [fromEmail] => team@properplan.com
+            [fromName] => Laura P
+            [reply2] => team@properplan.com
+            [html] => testing testing 123!
+            [text] => testing testing 123!
+            [name] => test campaign name
+        )
+
+)
+
+[17-Oct-2025 14:07:49 UTC] AC Handler: Message response => Array
+(
+    [code] => 201
+    [body] => Array
+        (
+            [message] => Array
+                (
+                    [subject] => test subject
+                    [reply2] => team@properplan.com
+                    [html] => testing testing 123!
+                    [text] => testing testing 123!
+                    [name] => test campaign name
+                    [links] => Array
+                        (
+                            [user] => https://lovetolaunch.api-us1.com/api/3/messages/1423/user
+                            [hyperlinks] => https://lovetolaunch.api-us1.com/api/3/messages/1423/hyperlinks
+                        )
+
+                    [id] => 1423
+                )
+
+        )
+
+    [headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+        (
+            [data:protected] => Array
+                (
+                    [date] => Fri, 17 Oct 2025 14:07:41 GMT
+                    [content-type] => application/json
+                    [content-length] => 339
+                    [cf-ray] => 99005d1928a386d0-LHR
+                    [cache-control] => no-store, no-cache, must-revalidate,no-cache, private
+                    [expires] => Thu, 19 Nov 1981 08:52:00 GMT
+                    [pragma] => no-cache
+                    [set-cookie] => Array
+                        (
+                            [0] => PHPSESSID=7051938ad092e82ba788c4b792a0ea17; path=/; secure; HttpOnly; SameSite=Lax
+                            [1] => em_acp_globalauth_cookie=de3f5dfe-0cc8-4a0c-bd12-bf146c08e7e0; path=/; domain=.lovetolaunch.api-us1.com; secure; httponly; SameSite=Lax
+                            [2] => cmp91738584=275ce76519c0feea91031fa4727ca077; expires=Sun, 16-Nov-2025 14:07:41 GMT; Max-Age=2592000; path=/; domain=.lovetolaunch.api-us1.com; secure; SameSite=Lax
+                        )
+
+                    [x-envoy-upstream-service-time] => 274
+                    [x-request-id] => 93809b59-e324-47d0-b54b-686392d02483
+                    [cf-cache-status] => DYNAMIC
+                    [strict-transport-security] => max-age=63072000; includeSubDomains; preload
+                    [server] => cloudflare
+                )
+
+        )
+
+)
+
+[17-Oct-2025 14:07:49 UTC] AC Handler: Message creation response code 201
+[17-Oct-2025 14:07:49 UTC] AC Handler: Campaign payload => Array
+(
+    [campaign] => Array
+        (
+            [name] => test campaign name
+            [type] => single
+            [status] => 0
+            [public] => 0
+            [tracklinks] => all
+            [trackreads] => 1
+            [htmlunsub] => 1
+            [p] => Array
+                (
+                    [3] => 3
+                )
+
+            [m] => Array
+                (
+                    [1423] => 1423
+                )
+
+        )
+
+)
+
+[17-Oct-2025 14:07:50 UTC] AC Handler: Campaign response => WP_Error Object
+(
+    [errors] => Array
+        (
+            [properplan_ac_email_api_error] => Array
+                (
+                    [0] => ActiveCampaign API request to /api/3/campaigns failed with status code 403.
+                )
+
+        )
+
+    [error_data] => Array
+        (
+            [properplan_ac_email_api_error] => Array
+                (
+                    [code] => 403
+                    [body] => Array
+                        (
+                            [errors] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [status] => 403
+                                            [title] => Forbidden
+                                            [detail] => Forbidden
+                                        )
+
+                                )
+
+                        )
+
+                    [headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [date] => Fri, 17 Oct 2025 14:07:41 GMT
+                                    [content-type] => application/json
+                                    [content-encoding] => gzip
+                                    [cache-control] => no-store, no-cache, must-revalidate
+                                    [expires] => Thu, 19 Nov 1981 08:52:00 GMT
+                                    [pragma] => no-cache
+                                    [set-cookie] => Array
+                                        (
+                                            [0] => PHPSESSID=5804d2727a5cca8c31806eac3c7846b9; path=/; secure; HttpOnly; SameSite=Lax
+                                            [1] => em_acp_globalauth_cookie=94d17064-11b5-4e3c-a55d-fa8ecd8141fd; path=/; domain=.lovetolaunch.api-us1.com; secure; httponly; SameSite=Lax
+                                        )
+
+                                    [x-envoy-upstream-service-time] => 133
+                                    [x-request-id] => 601bc475-305b-44a0-af83-d40b3237456f
+                                    [cf-cache-status] => DYNAMIC
+                                    [strict-transport-security] => max-age=63072000; includeSubDomains; preload
+                                    [server] => cloudflare
+                                    [cf-ray] => 99005d1c5b0c47cf-LHR
+                                )
+
+                        )
+
+                    [endpoint] => https://lovetolaunch.api-us1.com/api/3/campaigns
+                )
+
+        )
+
+    [additional_data:protected] => Array
+        (
+        )
+
+)
+
+[17-Oct-2025 14:07:50 UTC] AC Handler: Campaign request WP_Error - ActiveCampaign API request to /api/3/campaigns failed with status code 403.

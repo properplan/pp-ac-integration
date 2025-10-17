@@ -10,6 +10,16 @@ namespace ProperPlan\ACEmail;
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Default API URL for the ProperPlan ActiveCampaign test account.
+ */
+const DEFAULT_API_URL = 'https://properapptest.api-us1.com';
+
+/**
+ * Default API key for the ProperPlan ActiveCampaign test account.
+ */
+const DEFAULT_API_KEY = '833479e3809a6b0e53dd8e8d64386bec3c13d934e7bc7541b034489e126846a35430911e';
+
+/**
  * ActiveCampaign API client wrapper.
  */
 class ActiveCampaign_API {
@@ -116,6 +126,32 @@ function get_api_credentials() {
                 'url' => $api_url,
                 'key' => $api_key,
         );
+ * Falls back to the shared test credentials when options are empty so the
+ * plugin can communicate with the sandbox ActiveCampaign account out of the
+ * box.
+ *
+ * @return array{url:string,key:string}|null Array with url and key, or null when incomplete.
+ */
+function get_api_credentials() {
+	$api_url = get_option( 'properplan_ac_email_ac_url', '' );
+	$api_key = get_option( 'properplan_ac_email_ac_key', '' );
+
+	if ( empty( $api_url ) ) {
+		$api_url = DEFAULT_API_URL;
+	}
+
+	if ( empty( $api_key ) ) {
+		$api_key = DEFAULT_API_KEY;
+	}
+
+	if ( empty( $api_url ) || empty( $api_key ) ) {
+		return null;
+	}
+
+	return array(
+		'url' => $api_url,
+		'key' => $api_key,
+	);
 }
 
 /**
@@ -152,4 +188,11 @@ function test_connection( $api_url, $api_key ) {
         $client = new ActiveCampaign_API( $api_url, $api_key );
 
         return $client->request( 'GET', '/api/3/users/me' );
+	$credentials = get_api_credentials();
+
+	if ( null === $credentials ) {
+		return null;
+	}
+
+	return new ActiveCampaign_API( $credentials['url'], $credentials['key'] );
 }

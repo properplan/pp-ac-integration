@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once __DIR__ . '/includes/activecampaign-api.php';
+require_once __DIR__ . '/includes/admin-page.php';
 
 /**
  * Initialize the ProperPlan AC Email plugin.

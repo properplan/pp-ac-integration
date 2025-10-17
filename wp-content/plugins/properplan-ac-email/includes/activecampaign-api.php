@@ -112,6 +112,20 @@ class ActiveCampaign_API {
 /**
  * Retrieve ActiveCampaign credentials stored in WordPress options.
  *
+ * @return array{url:string,key:string}|null Array with url and key, or null when incomplete.
+ */
+function get_api_credentials() {
+        $api_url = get_option( 'properplan_ac_email_ac_url', '' );
+        $api_key = get_option( 'properplan_ac_email_ac_key', '' );
+
+        if ( empty( $api_url ) || empty( $api_key ) ) {
+                return null;
+        }
+
+        return array(
+                'url' => $api_url,
+                'key' => $api_key,
+        );
  * Falls back to the shared test credentials when options are empty so the
  * plugin can communicate with the sandbox ActiveCampaign account out of the
  * box.
@@ -146,6 +160,34 @@ function get_api_credentials() {
  * @return ActiveCampaign_API|null
  */
 function get_activecampaign_client() {
+        $credentials = get_api_credentials();
+
+        if ( null === $credentials ) {
+                return null;
+        }
+
+        return new ActiveCampaign_API( $credentials['url'], $credentials['key'] );
+}
+
+/**
+ * Test the connection to ActiveCampaign with the provided credentials.
+ *
+ * @param string $api_url API base URL.
+ * @param string $api_key API token.
+ *
+ * @return array|\WP_Error Response data on success or WP_Error on failure.
+ */
+function test_connection( $api_url, $api_key ) {
+        if ( empty( $api_url ) || empty( $api_key ) ) {
+                return new \WP_Error(
+                        'properplan_ac_email_missing_credentials',
+                        __( 'Both the API URL and API key are required to test the connection.', 'properplan-ac-email' )
+                );
+        }
+
+        $client = new ActiveCampaign_API( $api_url, $api_key );
+
+        return $client->request( 'GET', '/api/3/users/me' );
 	$credentials = get_api_credentials();
 
 	if ( null === $credentials ) {

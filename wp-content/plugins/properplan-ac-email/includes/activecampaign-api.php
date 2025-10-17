@@ -111,21 +111,6 @@ class ActiveCampaign_API {
 
 /**
  * Retrieve ActiveCampaign credentials stored in WordPress options.
- *
- * @return array{url:string,key:string}|null Array with url and key, or null when incomplete.
- */
-function get_api_credentials() {
-        $api_url = get_option( 'properplan_ac_email_ac_url', '' );
-        $api_key = get_option( 'properplan_ac_email_ac_key', '' );
-
-        if ( empty( $api_url ) || empty( $api_key ) ) {
-                return null;
-        }
-
-        return array(
-                'url' => $api_url,
-                'key' => $api_key,
-        );
  * Falls back to the shared test credentials when options are empty so the
  * plugin can communicate with the sandbox ActiveCampaign account out of the
  * box.
@@ -133,25 +118,25 @@ function get_api_credentials() {
  * @return array{url:string,key:string}|null Array with url and key, or null when incomplete.
  */
 function get_api_credentials() {
-	$api_url = get_option( 'properplan_ac_email_ac_url', '' );
-	$api_key = get_option( 'properplan_ac_email_ac_key', '' );
+    $api_url = get_option( 'properplan_ac_email_ac_url', '' );
+    $api_key = get_option( 'properplan_ac_email_ac_key', '' );
 
-	if ( empty( $api_url ) ) {
-		$api_url = DEFAULT_API_URL;
-	}
+    if ( empty( $api_url ) ) {
+        $api_url = DEFAULT_API_URL;
+    }
 
-	if ( empty( $api_key ) ) {
-		$api_key = DEFAULT_API_KEY;
-	}
+    if ( empty( $api_key ) ) {
+        $api_key = DEFAULT_API_KEY;
+    }
 
-	if ( empty( $api_url ) || empty( $api_key ) ) {
-		return null;
-	}
+    if ( empty( $api_url ) || empty( $api_key ) ) {
+        return null;
+    }
 
-	return array(
-		'url' => $api_url,
-		'key' => $api_key,
-	);
+    return array(
+        'url' => $api_url,
+        'key' => $api_key,
+    );
 }
 
 /**
